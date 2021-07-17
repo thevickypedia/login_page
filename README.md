@@ -1,2 +1,4 @@
-# login_page
-base login page using html, css and js
+# Login Page
+Base login page using HTML, CSS and JavaScript
+
+This uses client side authentication. (NEVER PREFERRED)
