@@ -1,4 +1,4 @@
-from os import environ, remove, system, path
+from os import environ, path, system
 from webbrowser import open as web_open
 
 
@@ -43,13 +43,22 @@ def login() -> tuple:
     return username, password
 
 
-def obfuscate(temp_file: str = 'temp.js', js_file: str = 'login-page.js') -> str:
-    """Command to obfuscate the ``JavaScript`` and write it as a file."""
+def obfuscate(temp_file: str, js_file: str = 'login-page.js') -> str:
+    """Command to obfuscate the ``JavaScript`` and write it as a file.
+
+    Args:
+        temp_file: Temporary file name which will be removed once the obfuscator command completes.
+        js_file: JavaScript file that is named in the ``index.html``
+
+    Returns:
+        str:
+        ``JavaScript`` obfuscator command.
+    """
     # noinspection LongLine
     return f"javascript-obfuscator {temp_file} --options-preset high-obfuscation --target browser --seed 0 --self-defending true --debug-protection true --debug-protection-interval true --string-array true --rotate-string-array true --shuffle-string-array true --string-array-threshold 1 --string-array-index-shift true --string-array-indexes-type hexadecimal-numeric-string --string-array-wrappers-count 5 --string-array-wrappers-type function --string-array-wrappers-parameters-max-count 5 --string-array-encoding rc4 --split-strings true --identifier-names-generator hexadecimal --compact true --simplify true --transform-object-keys true --numbers-to-expressions true --control-flow-flattening true --control-flow-flattening-threshold 1 --dead-code-injection true --dead-code-injection-threshold 1 --output {js_file}"  # noqa: E501
 
 
-def main() -> None:
+def trigger() -> None:
     """Controller for rest of the functions.
 
     Triggers:
@@ -64,10 +73,9 @@ def main() -> None:
     temp_f = 'placeholder.js'
     with open(temp_f, 'w') as file:
         file.write(write)
-    system(obfuscate())
-    remove(temp_f)
+    system(f'{obfuscate(temp_file=temp_f)} && rm {temp_f}')
     web_open('file://' + path.realpath('index.html'))
 
 
 if __name__ == '__main__':
-    main()
+    trigger()
