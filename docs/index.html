@@ -48,6 +48,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">Login Page</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="README.html#setup">Setup:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#pre-commit">Pre-Commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#runbook">Runbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#repository">Repository</a></li>
 </ul>
 </li>
 </ul>
@@ -58,7 +61,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="js_generator.login">
 <span class="sig-prename descclassname"><span class="pre">js_generator.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#js_generator.login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes <code class="docutils literal notranslate"><span class="pre">Username</span></code> and <code class="docutils literal notranslate"><span class="pre">Password</span></code> from environment variables.</p>
+<dd><p>Takes <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code> from environment variables.</p>
 <p>Prompts for <code class="docutils literal notranslate"><span class="pre">Username</span></code> and <code class="docutils literal notranslate"><span class="pre">Password</span></code> if not found in <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">vars</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -77,8 +80,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>temp_file</strong> – Temporary file name which will be removed once the obfuscator command completes.</p></li>
-<li><p><strong>js_file</strong> – JavaScript file that is named in the <code class="docutils literal notranslate"><span class="pre">index.html</span></code></p></li>
+<li><p><strong>temp_file</strong> – Temporary file name which will be removed after obfuscation.</p></li>
+<li><p><strong>js_file</strong> – JavaScript file name that is referenced in <code class="docutils literal notranslate"><span class="pre">index.html</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -108,15 +111,26 @@
 <dt class="sig sig-object py" id="js_generator.trigger">
 <span class="sig-prename descclassname"><span class="pre">js_generator.</span></span><span class="sig-name descname"><span class="pre">trigger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#js_generator.trigger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controller for rest of the functions.</p>
-<dl class="simple">
-<dt>Triggers:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">login()</span></code> function to get the <code class="docutils literal notranslate"><span class="pre">Username</span></code> and <code class="docutils literal notranslate"><span class="pre">Password</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">raw_js()</span></code> function to get the <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> with replaced placeholder values.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">obfuscate()</span></code> function to get the command to obfuscate.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Removes the temp file once the work is done.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">js_generator.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>to get the <code class="docutils literal notranslate"><span class="pre">Username</span></code> and <code class="docutils literal notranslate"><span class="pre">Password</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">js_generator.</span></span><span class="sig-name descname"><span class="pre">raw_js</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>to get the <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> with replaced placeholder values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">js_generator.</span></span><span class="sig-name descname"><span class="pre">obfuscate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>to get the command to obfuscate.</p>
+</dd></dl>
+
+<p>Removes the temp file once the <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> is generated.
+Opens the <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a web browser.</p>
 </dd></dl>
 
 </section>

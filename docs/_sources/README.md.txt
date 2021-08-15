@@ -10,3 +10,12 @@ written as a `.js` file.
 - `export USERNAME=<enter_username>`
 - `export PASSWORD=<enter_password>`
 - `python js_generator.py`
+
+### Pre-Commit
+> `pre-commit run --all-files`
+
+### Runbook
+[https://thevickypedia.github.io/login_page/](https://thevickypedia.github.io/login_page/)
+
+### Repository
+[https://github.com/thevickypedia/login_page](https://github.com/thevickypedia/login_page)

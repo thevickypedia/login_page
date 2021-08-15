@@ -28,7 +28,7 @@ loginButton.addEventListener("click", (e) => {
 
 
 def login() -> tuple:
-    """Takes ``Username`` and ``Password`` from environment variables.
+    """Takes ``USERNAME`` and ``PASSWORD`` from environment variables.
 
     Prompts for ``Username`` and ``Password`` if not found in ``env vars``.
 
@@ -47,8 +47,8 @@ def obfuscate(temp_file: str, js_file: str = 'login-page.js') -> str:
     """Command to obfuscate the ``JavaScript`` and write it as a file.
 
     Args:
-        temp_file: Temporary file name which will be removed once the obfuscator command completes.
-        js_file: JavaScript file that is named in the ``index.html``
+        temp_file: Temporary file name which will be removed after obfuscation.
+        js_file: JavaScript file name that is referenced in ``index.html``
 
     Returns:
         str:
@@ -61,12 +61,13 @@ def obfuscate(temp_file: str, js_file: str = 'login-page.js') -> str:
 def trigger() -> None:
     """Controller for rest of the functions.
 
-    Triggers:
-        - ``login()`` function to get the ``Username`` and ``Password``
-        - ``raw_js()`` function to get the ``JavaScript`` with replaced placeholder values.
-        - ``obfuscate()`` function to get the command to obfuscate.
+    Methods:
+        login(): to get the ``Username`` and ``Password``
+        raw_js(): to get the ``JavaScript`` with replaced placeholder values.
+        obfuscate(): to get the command to obfuscate.
 
-    Removes the temp file once the work is done.
+    Removes the temp file once the ``JavaScript`` is generated.
+    Opens the ``index.html`` in a web browser.
     """
     user_, pass_ = login()
     write = raw_js().replace('USERNAME_HERE', user_).replace('PASSWORD_HERE', pass_)
